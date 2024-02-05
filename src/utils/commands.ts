@@ -9,6 +9,7 @@ export interface Command {
 }
 export const commands = [
     {command: `${prefix}.helloWorld`, callback: () => vscode.window.showInformationMessage('Hello World from intro-extension! after refactoring')},
+    {command: `${prefix}.test`, callback: () => vscode.window.showInformationMessage('Hello World 2 from intro-extension! after refactoring')},
 ];
 export function registerCommands(context: vscode.ExtensionContext, commands: Command[]) {
     for (const command of commands) {

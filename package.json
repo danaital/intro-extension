@@ -16,6 +16,10 @@
       {
         "command": "intro-extension.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "intro-extension.test",
+        "title": "Test second command"
       }
     ]
   },
