@@ -15,15 +15,19 @@
     "commands": [
       {
         "command": "intro-extension.helloWorld",
-        "title": "Hello World"
+        "title": "My: Hello World"
       },
       {
         "command": "intro-extension.test",
-        "title": "Test second command"
+        "title": "My: Test second command"
       },
       {
         "command": "intro-extension.askQuestion",
-        "title": "Ask a question"
+        "title": "My: Ask a question"
+      },
+      {
+        "command": "intro-extension.openBasePanel",
+        "title": "My: Open Base Panel"
       }
     ]
   },
