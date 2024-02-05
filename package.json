@@ -20,6 +20,10 @@
       {
         "command": "intro-extension.test",
         "title": "Test second command"
+      },
+      {
+        "command": "intro-extension.askQuestion",
+        "title": "Ask a question"
       }
     ]
   },
