@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { CommandEnum } from '../shared/dtos/enums/command.enum';
 
 const prefix = "intro-extension";
 export interface ICommand {
@@ -8,9 +9,9 @@ export interface ICommand {
     
 }
 export const commands: ICommand[] = [
-    {command: `${prefix}.helloWorld`, callback: () => vscode.window.showInformationMessage('Hello World from intro-extension! after refactoring')},
-    {command: `${prefix}.test`, callback: () => vscode.window.showInformationMessage('Hello World 2 from intro-extension! after refactoring')},
-    {command: `${prefix}.askQuestion`, callback: async () => { 
+    {command: `${prefix}.${CommandEnum.HELLO_WORLD}`, callback: () => vscode.window.showInformationMessage('Hello World from intro-extension! after refactoring')},
+    {command: `${prefix}.${CommandEnum.TEST}`, callback: () => vscode.window.showInformationMessage('Hello World 2 from intro-extension! after refactoring')},
+    {command: `${prefix}.${CommandEnum.ASK_QUESTION}`, callback: async () => { 
         const answer = await vscode.window.showInformationMessage('How are you?', 'good', 'bad');
         vscode.window.showInformationMessage(`You are ${answer}`);
     }},
