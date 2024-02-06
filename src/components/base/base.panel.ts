@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getNonce } from "./getNonce";
+import { getNonce } from "../../utils/getNonce";
 
 
 export class BasePanel {
@@ -127,27 +127,31 @@ export class BasePanel {
   private _getHtmlForWebview(webview: vscode.Webview) {
     // // And the uri we use to load this script in the webview
     // const scriptUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/swiper.js")
+    //   vscode.Uri.joinPath(this._extensionUri, "dist", "components", "base", "base.js")
     // );
+    const scriptUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "main.js")
+    );
+    // Local path to css styles
+    const styleResetPath = vscode.Uri.joinPath(
+      this._extensionUri,
+      "media",
+      "reset.css" 
+    );
+    const stylesPathMainPath = vscode.Uri.joinPath(
+      this._extensionUri,
+      "media",
+      "vscode.css" 
+    );
+    // Build each stylesheet used in the webviews 
 
-    // // Local path to css styles
-    // const styleResetPath = vscode.Uri.joinPath(
-    //   this._extensionUri,
-    //   "media",
-    //   "reset.css"
-    // );
-    // const stylesPathMainPath = vscode.Uri.joinPath(
-    //   this._extensionUri,
-    //   "media",
-    //   "vscode.css"
-    // );
 
-    // Uri to load styles into webview
-    // const stylesResetUri = webview.asWebviewUri(styleResetPath);
-    // const stylesMainUri = webview.asWebviewUri(stylesPathMainPath);
-    // const cssUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/swiper.css")
-    // );
+    const stylesResetUri = webview.asWebviewUri(styleResetPath);
+    const stylesMainUri = webview.asWebviewUri(stylesPathMainPath);
+
+    const cssUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "dist", "components", "base", "base.js")
+    );
 
     // Use a nonce to only allow specific scripts to be run
     const nonce = getNonce();
@@ -164,12 +168,19 @@ export class BasePanel {
       webview.cspSource
     }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script nonce="${nonce}">
+        <link href="${stylesResetUri}" rel="stylesheet">
+        <link href="${stylesMainUri}" rel="stylesheet">
+        <link href="${cssUri}" rel="stylesheet">
+        <script nonce="${nonce}" src="${scriptUri}">
         </script>
 			</head>
       <body>
-      <H1>TEST</H1>
+      <H1 id="1">TEST</H1>
+      <input type="text" id="input"></input>
+      <button id="button">Click me</button>
+      <label id="label"></label>
 			</body>
+      <script nonce="${nonce}" src="${scriptUri}"></script>
 			</html>`;
   }
 }

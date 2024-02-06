@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { CommandEnum } from '../shared/dtos/enums/command.enum';
-import { BasePanel } from './base.panel';
+import { BasePanel } from '../components/base/base.panel';
 
 const prefix = "intro-extension";
 export interface ICommand {
