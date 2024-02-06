@@ -171,8 +171,6 @@ export class BasePanel {
         <link href="${stylesResetUri}" rel="stylesheet">
         <link href="${stylesMainUri}" rel="stylesheet">
         <link href="${cssUri}" rel="stylesheet">
-        <script nonce="${nonce}" src="${scriptUri}">
-        </script>
 			</head>
       <body>
       <H1 id="1">TEST</H1>
@@ -180,7 +178,8 @@ export class BasePanel {
       <button id="button">Click me</button>
       <label id="label"></label>
 			</body>
-      <script nonce="${nonce}" src="${scriptUri}"></script>
+      <script nonce="${nonce}" src="${scriptUri}">
+      </script>
 			</html>`;
   }
 }
